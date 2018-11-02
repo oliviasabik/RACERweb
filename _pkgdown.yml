@@ -7,7 +7,7 @@ template:
 navbar:
   left:
   - text: Vignette
-    href: articles/index.html
+    href: articles/IntroToRACER.html
   - text: Documentation
     href: reference/index.html
   - text: GitHub

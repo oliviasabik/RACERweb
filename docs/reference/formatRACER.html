@@ -113,7 +113,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>formatRACER</span>(<span class='no'>assoc_data</span>, <span class='no'>chr_col</span>, <span class='no'>pos_col</span>, <span class='kw'>p_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>log10p_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ld_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>log10p_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ld_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rs_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,14 +144,16 @@
     </tr>
     <tr>
       <th>rs_col</th>
-      <td><p>optional. numeric. Required if you want to calculated LD using 1000 genomes for analysis, index of column containing rsID numbers for SNPs</p></td>
+      <td><p>optional. numeric. Required if you want to use the use
+ldRACER to pull LD information from the 1000 genomes phase III project,
+or if you want to make a scatter comparison plot</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>mark3_bmd_gwas</span>)
-<span class='fu'>formatRACER</span>(<span class='kw'>assoc_data</span> <span class='kw'>=</span> <span class='no'>mark3_bmd_gwas</span>, <span class='kw'>chr_col</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>pos_col</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>p_col</span> <span class='kw'>=</span> <span class='fl'>11</span>)</div><div class='output co'>#&gt; <span class='message'>All inputs are go!</span></div><div class='output co'>#&gt; <span class='message'>Formating association data...</span></div><div class='output co'>#&gt; <span class='message'>Processing -log10(p-values)...</span></div><div class='output co'>#&gt; <span class='message'>Preparing association data...</span></div><div class='output co'>#&gt;                                                                                     SNPID
+<span class='fu'>formatRACER</span>(<span class='kw'>assoc_data</span> <span class='kw'>=</span> <span class='no'>mark3_bmd_gwas</span>, <span class='kw'>chr_col</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>pos_col</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>p_col</span> <span class='kw'>=</span> <span class='fl'>11</span>, <span class='kw'>rs_col</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>All inputs are go!</span></div><div class='output co'>#&gt; <span class='message'>Formating association data...</span></div><div class='output co'>#&gt; <span class='message'>Processing -log10(p-values)...</span></div><div class='output co'>#&gt; <span class='message'>Preparing association data...</span></div><div class='output co'>#&gt;                                                                                     SNPID
 #&gt; 1                                                                        14:102500153:A:G
 #&gt; 2                                                                        14:102500244:G:T
 #&gt; 3                                                                        14:102500421:C:A
@@ -7844,7 +7846,7 @@
 #&gt; 7690                                                                     14:103675360:T:G
 #&gt; 7691                                                                     14:103675592:T:C
 #&gt; 7692                                                                     14:103675765:G:A
-#&gt;                                                      SNP CHR       POS
+#&gt;                                                    RS_ID CHR       POS
 #&gt; 1                                             rs10149958  14 102500153
 #&gt; 2                                             rs17512713  14 102500244
 #&gt; 3                                            rs149496322  14 102500421

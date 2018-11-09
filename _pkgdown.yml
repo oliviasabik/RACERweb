@@ -21,7 +21,7 @@ navbar:
     href: reference/index.html
   - text: GitHub
     icon: fa-github fa-lg
-    href: https://github.com/oliviasabik/RACERweb
+    href: https://github.com/oliviasabik/RACER
 
   right:
   - text: Olivia Sabik

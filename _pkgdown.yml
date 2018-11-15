@@ -11,7 +11,7 @@ url: http://oliviasabik.github.io/RACERweb
 
 template:
   params:
-    bootswatch: cerulean
+    bootswatch: flatly
 
 navbar:
   left:

@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,10 +32,10 @@
 
 <meta property="og:title" content="Calculating Linkage Disequilibrium Information for Regional Association ComparER — ldRACER" />
 
-<meta property="og:description" content="This group of functions allows you to creat a plot of -log10(P-values) of an association study by their genomic position, for example, the results of a GWAS or eQTL study. This function takes the rsID of a reference SNP and calculates LD for all other SNPs in the dataset using the 1000 Genomes Phase III Data. The input of the function should already have been formatted using formatRACER()." />
+<meta property="og:description" content="This group of functions allows you to creat a plot of -log10(P-values) of an association study by their genomic position, for example, the results of a GWAS or eQTL study. This function takes the rsID of a reference SNP and calculates LD for all other SNPs in the dataset using the 1000 Genomes Phase III Data. This function may also find the most significantly associated SNP in the input data set and use it as the lead SNP (auto_snp = TRUE). The input of the function should already have been formatted using formatRACER()." />
 <meta name="twitter:card" content="summary" />
 
-<meta name="robots" content="noindex">
+
 
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -61,34 +61,37 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RACER</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development package">0.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/index.html">Vignette</a>
-</li>
-<li>
-  <a href="../reference/index.html">Documentation</a>
-</li>
-<li>
-  <a href="https://github.com/oliviasabik/RACER">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
      
-    GitHub
   </a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/IntroToRACER.html">Introduction to RACER</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://oliviasabik.github.io/">Olivia Sabik</a>
-</li>
-<li>
-  <a href="https://oliviasabik.github.io/RACERweb/index.html">RACER</a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -108,11 +111,11 @@
 
     <div class="ref-description">
     
-    <p>This group of functions allows you to creat a plot of -log10(P-values) of an association study by their genomic position, for example, the results of a GWAS or eQTL study. This function takes the rsID of a reference SNP and calculates LD for all other SNPs in the dataset using the 1000 Genomes Phase III Data. The input of the function should already have been formatted using formatRACER().</p>
+    <p>This group of functions allows you to creat a plot of -log10(P-values) of an association study by their genomic position, for example, the results of a GWAS or eQTL study. This function takes the rsID of a reference SNP and calculates LD for all other SNPs in the dataset using the 1000 Genomes Phase III Data. This function may also find the most significantly associated SNP in the input data set and use it as the lead SNP (auto_snp = TRUE). The input of the function should already have been formatted using formatRACER().</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ldRACER</span>(<span class='no'>assoc_data</span>, <span class='no'>rs_col</span>, <span class='no'>pops</span>, <span class='no'>lead_snp</span>)</pre>
+    <pre class="usage"><span class='fu'>ldRACER</span>(<span class='no'>assoc_data</span>, <span class='no'>rs_col</span>, <span class='no'>pops</span>, <span class='kw'>lead_snp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>auto_snp</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,7 +126,7 @@
     </tr>
     <tr>
       <th>rs_col</th>
-      <td><p>required. numeric. index of column containing rsID numbers for SNPs</p></td>
+      <td><p>required. numeric or character. index of column or name of column containing rsID numbers for SNPs</p></td>
     </tr>
     <tr>
       <th>pops</th>
@@ -131,7 +134,11 @@
     </tr>
     <tr>
       <th>lead_snp</th>
-      <td><p>required. Required if ldby = "1000genomes". snp used to calculate LD</p></td>
+      <td><p>required, unless auto_snp = TRUE. Required if ldby = "1000genomes". snp used to calculate LD</p></td>
+    </tr>
+    <tr>
+      <th>auto_snp</th>
+      <td><p>logical. default = FALSE, can be set to TRUE to calculate LD using the highest LOG10P SNP as the reference</p></td>
     </tr>
     </table>
     
@@ -156,7 +163,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://oliviasabik.github.io/'>Olivia Sabik</a>.</p>
+  <p>Developed by Olivia Sabik.</p>
 </div>
 
 <div class="pkgdown">

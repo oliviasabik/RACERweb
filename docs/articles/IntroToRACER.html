@@ -194,7 +194,7 @@ mark3_eqtl_f =<span class="st"> </span>RACER<span class="op">::</span><span clas
 ## 4 0.06237600 0.69 142487 0.161150909     NA NA
 ## 5 0.03589580 0.13 142487 0.886056648     NA NA
 ## 6 0.04781450 0.59 142487 0.229147988     NA NA</code></pre>
-<p>As with formatRACER(), the output of ldRACER() is a modified data frame, now with an LD column and an LD_BIN column, which will be used in the plot. These will need to be saved as well.</p>
+<p>As with formatRACER(), the output of ldRACER() is a modified data frame, now with an LD column and an LD_BIN column, which will be used in the plot. These will need to be saved as well. If you get an error in ldRACER() that reads "Error in data.table::fread(ld_command):Single column input contains invalid quotes. Self healing only effective when ncol>1", copy the printed out url into the browser. The LDLink site will provide you with an error, e.g. the variant is not in the 1000G database.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mark3_bmd_gwas_f_ld =<span class="st"> </span>RACER<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/RACER/topics/ldRACER">ldRACER</a></span>(<span class="dt">assoc_data =</span> mark3_bmd_gwas_f, <span class="dt">rs_col =</span> <span class="dv">2</span>, <span class="dt">pops =</span> <span class="st">"EUR"</span>, <span class="dt">lead_snp =</span> <span class="st">"rs11623869"</span>)</code></pre></div>
 <pre><code>## All inputs are go!</code></pre>
 <pre><code>## Reading in association data...</code></pre>
